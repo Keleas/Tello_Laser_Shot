@@ -1,10 +1,11 @@
-import cv2
 import socket
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.animation as animation
 import mpl_toolkits.mplot3d.axes3d as p3
+
+from drone.base_controls import DroneCommand
 
 plt.rcParams['animation.html'] = 'html5'
 

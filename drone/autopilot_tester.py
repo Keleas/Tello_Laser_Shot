@@ -9,7 +9,9 @@ class TestController(CommandController):
     def __init__(self):
         super(TestController, self).__init__()
 
-        self.cv_system = SystemCV()
+        cv_args = {'laser_on': True,
+                   }
+        self.cv_system = SystemCV(**cv_args)
 
     def run(self):
         """ Основной цикл запуска тестировщика """

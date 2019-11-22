@@ -26,7 +26,9 @@ class DroneController(CommandController):
         # методы взаимодействия с дроном
         self.drone = Tello()
         # методы взаимодействия с системой технического зрения
-        self.cv_system = SystemCV()
+        cv_args = {'laser_on': True,
+                   }
+        self.cv_system = SystemCV(**cv_args)
 
         # Остальные методы класса системы управления
         # Ваш код ...

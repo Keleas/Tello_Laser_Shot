@@ -37,13 +37,10 @@ class FrontEnd(object):
     def run(self):
         """ Главынй цикл программы управления """
 
-        self.autopilot_tester.run()
+        # self.autopilot_tester.run()
         if self.check_connect():
             self.command_controller.video_loop()
 
-            # визуализация маршрута движения ЛА
-            plotter = NavigationSystem(self.command_controller.cmd_logger)
-            plotter.plot_route()
         else:
             # запуск виртуального беспилотника на локалке
             # камера подключается от пк, управление имитируется в графике
