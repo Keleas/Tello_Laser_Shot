@@ -41,9 +41,9 @@
 
 - __drone/djitellopy__ — [DJI Tello](https://github.com/damiafuentes/DJITelloPy) Python интерфейс с использованием официального Tello SDK.
 
-- __useful/laser.py__ — Пример управления модулем полезной нагрузки.
+- __drone/virtual_drone.py__ — Модуль для моделирования дрона.
 
-- __useful/cv_algo.py__ — Шаблоны для обработки видеопотока и определения цвета.
+- __useful/color_helper.py__ — Шаблоны для обработки видеопотока и определения цвета.
 
 *Код обновляется ...*
 
