@@ -1,5 +1,5 @@
 from drone.controller import DroneController
-from drone.autopilot_tester import TestController
+from drone.virtual_drone import TestController
 from drone.tools import NavigationSystem
 
 
@@ -16,7 +16,7 @@ class FrontEnd(object):
     def __init__(self):
         # управляющий модуль ЛА
         self.command_controller = DroneController()
-        self.autopilot_tester = TestController()
+        self.virt_drone = TestController()
 
         self.display_time_upd = 30
 
@@ -44,7 +44,7 @@ class FrontEnd(object):
         else:
             # запуск виртуального беспилотника на локалке
             # камера подключается от пк, управление имитируется в графике
-            self.autopilot_tester.run()
+            self.virt_drone.run()
 
         return True
 
