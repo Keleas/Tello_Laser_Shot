@@ -27,29 +27,7 @@
 
 ## Установка
 
-### PIP
-
-Чтобы установить окружение с помощью __pip__:
-
-
-1. Установить окружение ``` python3 -m venv tello_drone ```
-
-2. Активировать окружение: 
-	- Windows: ``` tello_drone\Scripts\activate.bat ```
-
-	- Unix или MacOS: ``` source tello_drone/bin/activate ```
-
-3. Установить необходимые пакеты: ``` pip3 install -r requirements.txt ```
-
-### Conda
-
-Чтобы установить окружение с помощью __conda__:
-
-1. Установить окружение: ```conda create -n tello_drone python=3```
-
-2. Активировать окружение: ``` conda activate tello_drone ```
-
-3. Установить необходимые пакеты: ``` conda install --yes --file requirements.txt ```
+Чтобы установить окружение с помощью __conda__: ```conda env create -f tello_drone_env.yml```
 
 ## Описание файлов в репозитории
 
