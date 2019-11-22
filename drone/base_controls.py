@@ -46,7 +46,7 @@ class DroneInfo(object):
 
 
 class CommandController(object):
-    """ Система управления всеми модулями ЛА """
+    """ Система ручного управления всеми модулями ЛА """
 
     def __init__(self, **args):
         self.cmd_logger = np.zeros((1, 4))   # логгер движения ЛА

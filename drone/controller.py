@@ -9,7 +9,7 @@ from drone.cv_system import SystemCV
 
 
 class DroneController(CommandController):
-    """ Система управления всеми модулями дрона """
+    """ Система управления всеми модулями дрона для автопилота"""
 
     def __init__(self):
         # инициализция класса управления
