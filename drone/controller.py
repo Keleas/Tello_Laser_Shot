@@ -49,13 +49,27 @@ class DroneController(CommandController):
 
         return True
 
-    # def upd_frame_read(self):
-    #     """
-    #     Вернуть текущее изображение из видеопотока
-    #     :return: np.array: текущее изображение из видеопотока
-    #     """
-    #     frame = self.drone.get_frame_read().frame
-    #     return frame
+    def general_key_parser(self, key):
+        """
+        Обобщенный парсер команд управления
+        :param key: int: команда управления
+        :return: True - все прошло успешно, False - в другом случае
+        """
+        if key == ord('h'):
+            self.cv_system.laser.fire('Fire', puls_dur=1000, delay_dur=10)
+
+        # Press p for controls override
+        if key == ord('p'):
+            if not self.is_autopilot:
+                self.is_autopilot = True
+                self.autopilot.reload()
+            else:
+                self.is_autopilot = False
+
+        else:
+            self.key_parser(key, self.drone)
+
+        return True
 
     def upd_flight_velocity_state(self):
         """
@@ -85,10 +99,6 @@ class DroneController(CommandController):
             self.autopilot_cmd = DroneCommand()  # обнуление команды
             return True
 
-    # def send_drone_info(self):
-    #     """ Отправить информацию с дрона """
-    #     return self.drone_info
-
     def video_loop(self):
         """ Основной цикл для обработки видеопотока и формирования поведения дрона """
         should_stop = False  # флаг остановки
@@ -116,7 +126,7 @@ class DroneController(CommandController):
 
                 # получить команду с ручного управления
                 key = cv2.waitKey(1)
-                self.key_parser(key, self.drone)
+                self.general_key_parser(key)
                 if key == 27:
                     should_stop = True
 

@@ -138,12 +138,12 @@ class CommandController(object):
                 self.drone_info.flight_mode = '1 canal control'
 
         # Press p for controls override
-        if key == ord('p'):
-            if not self.is_autopilot:
-                self.is_autopilot = True
-                # self.autopilot.reload()
-            else:
-                self.is_autopilot = False
+        # if key == ord('p'):
+        #     if not self.is_autopilot:
+        #         self.is_autopilot = True
+        #         # self.autopilot.reload()
+        #     else:
+        #         self.is_autopilot = False
 
         if self.drone_info.flight_mode == '4 canal control' and self.send_cmd_control:
             cmd_signal = int(self.default_states['starting_speed'] * self.default_states['speed']) * 2
