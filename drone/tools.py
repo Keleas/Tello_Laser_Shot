@@ -315,8 +315,8 @@ if __name__ == '__main__':
 
     import time
     laser = LaserController()
-    # while True:
-    #     time.sleep(2)
-    #     laser.fire('Fire', puls_dur=1000, delay_dur=10)
+    while True:
+        time.sleep(2)
+        laser.fire('Fire', puls_dur=1000, delay_dur=10)
 
 
