@@ -67,6 +67,48 @@ class SystemCV(object):
         self.is_target_detected = False
 
         potential_targets = np.array([])
+        
+        # На вход мы получаем видео с БПЛА
+
+        img_bnw = cv2.cvtColor(frame.copy(), cv2.COLOR_BGR2GRAY)
+        img = cv2.GaussianBlur(img_bnw, (5, 5), 0)
+        bilF = cv2.bilateralFilter(img, d=2, sigmaColor=250, sigmaSpace=250)
+
+        edges = cv2.Canny(bilF, 90, 360, 5)
+
+        contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+        contours_new = []
+        h, w = frame.shape[:2]
+
+        for cnt in contours:
+            if cv2.contourArea(cnt) > 1000 and cv2.contourArea(cnt) < h * w - 100000:
+                peri = cv2.arcLength(cnt, True)
+                approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
+                peri_app = cv2.arcLength(approx, True)
+
+                if 7 < len(approx) < 10 and peri_app / peri < 0.97 and peri_app / peri > 0.89:
+
+                    mask = np.ones_like(img_bnw.copy())
+                    cv2.drawContours(mask, [cnt], -1, 255, -1)
+
+                    out = np.ones_like(frame)
+                    out[mask == 255] = frame[mask == 255]
+
+                    x, y, w, h = cv2.boundingRect(cnt)
+                    roi = out[y:y + h, x:x + w]
+                    # cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+                    roi_hsv = cv2.cvtColor(roi.copy(), cv2.COLOR_BGR2HSV)
+                    roi_hsv_mask = cv2.inRange(roi_hsv, (0, 0, 0), (255, 10, 10))
+                    s = np.sum(cv2.bitwise_not(roi_hsv_mask))
+                    k = roi_hsv_mask.shape[0] * roi_hsv_mask.shape[1]
+
+                    percent = (s / 255) / k
+
+                    if percent > 0.65:
+                        potential_targets.append((h, w, x + w / 2, y + h / 2)) # potrntial_targets = [высота, ширина, x, y - центр мишени]
+                        contours_new.append(cnt)
+
 
         return potential_targets
 
