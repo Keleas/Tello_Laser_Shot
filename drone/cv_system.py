@@ -108,6 +108,8 @@ class SystemCV(object):
                     if percent > 0.65:
                         potential_targets.append((h, w, x + w / 2, y + h / 2)) # potrntial_targets = [высота, ширина, x, y - центр мишени]
                         contours_new.append(cnt)
+                        
+                        self.is_target_detected = True
 
 
         return potential_targets
