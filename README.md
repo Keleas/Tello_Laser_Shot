@@ -134,4 +134,6 @@ __Кураторы кейса:__
 
 __Участники кейса:__
 
+[laptevaarina](https://github.com/laptevaarina)
+
 *Список пополняется ...*
