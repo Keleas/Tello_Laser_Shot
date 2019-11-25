@@ -97,16 +97,20 @@ class SystemCV(object):
 
                     x, y, w, h = cv2.boundingRect(cnt)
                     roi = out[y:y + h, x:x + w]
-                    # cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
                     roi_hsv = cv2.cvtColor(roi.copy(), cv2.COLOR_BGR2HSV)
                     roi_hsv_mask = cv2.inRange(roi_hsv, (0, 0, 0), (255, 10, 10))
                     s = np.sum(cv2.bitwise_not(roi_hsv_mask))
                     k = roi_hsv_mask.shape[0] * roi_hsv_mask.shape[1]
 
                     percent = (s / 255) / k
+                    
+                    blue_roi = roi_hsv.copy()
+                    blue_roi = cv2.inRange(blue_roi, (70, 100, 100), (110, 255, 255))
 
-                    if percent > 0.65:
-                        potential_targets.append((h, w, x + w / 2, y + h / 2)) # potrntial_targets = [высота, ширина, x, y - центр мишени]
+                    sum_blue = np.sum(blue_roi)
+
+                    if percent > 0.65 and sum_blue < 10:
+                        potential_targets.append((h, w, x + w / 2, y + h / 2)) # potential_targets = [высота, ширина, x, y - центр мишени]
                         contours_new.append(cnt)
                         
                         self.is_target_detected = True
