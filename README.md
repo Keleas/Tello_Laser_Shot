@@ -19,7 +19,7 @@
 
 [Постановка инженерно-технической задачи кейса](https://github.com/Keleas/Tello_Laser_Shot/blob/master/case_conditions.md), которая включает в себя цели, задачи, принятые ограничения и характеристики объектов кейса.
 
-[Презентация](https://docs.google.com/presentation/d/15SAW8LknzE6YfrhGR5P2_PucGrpDgtmB-_SrqSMS_jw/edit?usp=sharing) с защиты кейса.
+[Презентация]() с защиты кейса.
 
 ## Демонстрация решения
 
