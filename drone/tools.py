@@ -38,9 +38,10 @@ class SignalTransformer(object):
         """
         return real
 
-    def fit(self):
-        """ Расчитать регрессию по определению дальности до объекта """
-        pass
+    def fit(self, height, width=0):
+        """ Расчитать регрессию по определению дальности до объекта y=(13650/x)+4 """
+
+        return 13650/((max(height, width))+4)
 
 
 class RouteCreator(object):
@@ -316,7 +317,7 @@ if __name__ == '__main__':
     import time
     laser = LaserController()
     while True:
-        time.sleep(2)
-        laser.fire('Fire', puls_dur=1000, delay_dur=10)
+       time.sleep(2)
+       laser.fire('Fire', puls_dur=1000, delay_dur=10)
 
 
