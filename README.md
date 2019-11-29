@@ -19,6 +19,8 @@
 
 [Постановка инженерно-технической задачи кейса](https://github.com/Keleas/Tello_Laser_Shot/blob/master/case_conditions.md), которая включает в себя цели, задачи, принятые ограничения и характеристики объектов кейса.
 
+[Техническое описание](https://docs.google.com/document/d/17kr19o82x-43bqUDP20d9jeDlM1DWrNjdxtdaQakFNs/edit?usp=sharing) модуля лазерной указки и мишени. 
+
 [Презентация](https://docs.google.com/presentation/d/1biOTNeaPVXXxxrHvvTEWBiLqoUdYQppOPbZNus6Bpf4/edit?usp=sharing) с защиты кейса.
 
 ## Демонстрация решения
