@@ -25,7 +25,7 @@
 
 ## Демонстрация решения
 
-![Alt Text](input/demo_1.gif)
+![Alt Text](demo_1.gif)
 
 ## Установка
 
